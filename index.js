@@ -17,6 +17,9 @@ app.use(cors());
 
 
 // routes start
+app.get('/', (req, res)=>{
+    res.send("Welcome to notes app");
+})
 app.use('/notes', noteRoutes);
 // routes end
 
