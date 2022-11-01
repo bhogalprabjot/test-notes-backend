@@ -4,8 +4,9 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import noteRoutes from './routes/notes.js';
 
+import noteRoutes from './routes/notes.js';
+import userRoutes from './routes/users.js';
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,8 @@ app.get('/', (req, res)=>{
     res.send("Welcome to notes app");
 })
 app.use('/notes', noteRoutes);
+app.use('/user', userRoutes);
+
 // routes end
 
 

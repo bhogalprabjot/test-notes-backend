@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import Note from "../models/note.js";
 
 export const getNotes = async (req, res) => {
+    console.log("GET /notes");
     try{
         const notes = await Note.find();
         // console.log(notes);
@@ -16,7 +17,8 @@ export const getNotes = async (req, res) => {
 export const createNote = async (req, res) => {
     const note = req.body;
     const newNote = new Note(note);
-    console.log(newNote);
+    console.log("POST /notes");
+    // console.log(newNote);
     
     try{
         await newNote.save();
@@ -30,6 +32,7 @@ export const createNote = async (req, res) => {
 export const updateNote = async (req, res) => {
     const {id: _id} = req.params;
     const note = req.body;
+    console.log("PATCH /notes/id");
     // console.log(note);
     if(!mongoose.Types.ObjectId.isValid(_id))
         return res.status(404).json({"message": "No note with that ID"});
@@ -47,6 +50,8 @@ export const updateNote = async (req, res) => {
 
 export const deleteNote = async (req, res) => {
     const {id: _id} = req.params;
+    console.log("DELETE /notes/id");
+
 
     if(!mongoose.Types.ObjectId.isValid(_id))
         return res.status(404).json({"message": "No note with that ID"});
