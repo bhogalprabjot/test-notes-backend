@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const noteSchema = mongoose.Schema({
     title: String,
     noteBody: String,
+    color: String,
     createdAt: {
         type: Date,
         default: new Date()
